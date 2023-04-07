@@ -8,8 +8,10 @@ import (
 
 func main() {
 
+	core := framework.NewCore()
+	RegisterRouter(core)
 	server := &http.Server{
-		Handler: framework.NewCore(),
+		Handler: core,
 		Addr:    ":8080",
 	}
 	if err := server.ListenAndServe(); err != nil {
